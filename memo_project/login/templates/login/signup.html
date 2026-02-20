@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign up</title>
+</head>
+<body>
+  <h1>ユーザー登録</h1>   
+
+  <form action="{% url 'signup' %}" method="post" novalidate>
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+      <ul>
+        {% for err in form.non_field_errors %}
+          <li>{{ err }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <div>
+      <label for="{{ form.username.id_for_label }}">ユーザー名</label><br>
+      {{ form.username }}
+      {% for err in form.username.errors %}
+        <div>{{ err }}</div>
+      {% endfor %}
+    </div>
+
+    <div>
+      <label for="{{ form.email.id_for_label }}">メール</label><br>
+      {{ form.email }}
+      {% for err in form.email.errors %}
+        <div>{{ err }}</div>
+      {% endfor %}
+    </div>
+
+    <div>
+      <label for="{{ form.birth_date.id_for_label }}">birth_date（年のfloat想定）</label><br>
+      {{ form.birth_date }}
+      {% for err in form.birth_date.errors %}
+        <div>{{ err }}</div>
+      {% endfor %}
+    </div>
+
+    <div>
+      <label for="{{ form.password1.id_for_label }}">パスワード</label><br>
+      {{ form.password1 }}
+      {% for err in form.password1.errors %}
+        <div>{{ err }}</div>
+      {% endfor %}
+    </div>
+
+    <div>
+      <label for="{{ form.password2.id_for_label }}">パスワード（確認）</label><br>
+      {{ form.password2 }}
+      {% for err in form.password2.errors %}
+        <div>{{ err }}</div>
+      {% endfor %}
+    </div>
+
+    <button type="submit">登録</button>
+  </form>
+</body>
+</html>

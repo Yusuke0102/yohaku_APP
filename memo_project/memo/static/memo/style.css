@@ -1,0 +1,71 @@
+:root { --header-h: 100px; } /* headerの高さと必ず一致 */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden; /* ページ全体はスクロール禁止 */
+}
+
+.logo {
+  font-weight: bold;
+  color: #6f42c1;
+  text-decoration: none;
+  margin-left: 50px;
+}
+
+
+/* header固定 */
+.header {
+  background-color: rgba(43, 43, 43, 1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-h);
+  z-index: 1000;
+}
+
+/* ここが重要：mainを画面に固定して、header下の領域を占有 */
+.page-content {
+  position: fixed;
+  top: var(--header-h);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-top: 0;     /* ← fixedにしたので padding は不要 */
+  overflow: hidden;   /* ← main自体もスクロールさせない */
+}
+
+/* 3カラム全体を「残り高さ100%」に */
+.app-body {
+  height: 100%;
+}
+
+/* row/colの高さが効くように */
+.app-body .row {
+  height: 100%;
+}
+
+/* 真ん中だけスクロール */
+.timeline-area {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* 横スクロールの元凶を潰す保険（長文/URL対策） */
+.timeline-area * {
+  max-width: 100%;
+  word-break: break-word;
+}
+
+#left-sidebar, #right-sidebar {
+  background-color: rgba(43, 43, 43, 0.1);
+}
+
+#right-sidebar {
+  background-color: rgba(43, 43, 43, 0.1);
+}

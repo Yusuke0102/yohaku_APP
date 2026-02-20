@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="1 URL={% url 'memo' %}">
+  <title>メモ {{ request.user.username }}</title>
+</head>
+<body>
+    <h1>{{ request.user.username }}：タイムライン</h1>
+    {% if State == 'liked' %}
+    <p>このメモにいいねしました！</p>
+    {% elif State == 'unliked' %}
+    <p>このメモのいいねを取り消しました！</p>
+    {% endif %}
+  <h2>{{ memo.title }}</h2>
+  <p>{{ memo.body }}</p>
+  <small>{{ memo.created_at }}</small>
+</body>

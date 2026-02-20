@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>メモ {{ request.user.username }}</title>
+</head>
+<body>
+  <h1>{{ request.user.username }}のメモ一覧</h1>
+  <p>本当にこのメモを削除しますか？</p>
+  <h2>{{ memo.title }}</h2>
+  <p>{{ memo.body }}</p>
+
+  <form action="{% url 'delete_memo' memo.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">削除</button>
+    <a href="{% url 'memo' %}">キャンセル</a>
+  </form>
+</body>
