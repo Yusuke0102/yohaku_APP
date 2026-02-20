@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>メモ {{ request.user.username }}</title>
+</head>
+<body>
+  <h1>メモ編集</h1>   
+
+  <form action="{% url 'edit_memo' memo.id %}" method="post" novalidate>
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+      <ul>
+        {% for err in form.non_field_errors %}
+          <li>{{ err }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <p>
+      <label for="{{ form.title.id_for_label }}">タイトル</label><br>
+      {{ form.title }}
+      {% for err in form.title.errors %}
+        <div>{{ err }}</div>
+      {% endfor %}
+    </p>
+
+    <p>
+      <label for="{{ form.body.id_for_label }}">本文</label><br>
+      {{ form.body }}
+      {% for err in form.body.errors %}
+        <div>{{ err }}</div>
+      {% endfor %}
+    </p>
+
+    <button type="submit">更新</button>
+  </form>
+</body>
+</html>

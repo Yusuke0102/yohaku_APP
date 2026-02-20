@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'login/style.css' %}">
+  <title>yohaku - Login</title>
+</head>
+
+<body class="body">
+  <div> class="page-wrapper d-flex flex-column">
+  <header class="header">
+    <h1 id="logo" class="logo my-4">
+      <a href="{% url 'home' %}" class="text-decoration-none text-white">yohakuNote</a>
+    </h1>
+  </header>
+  <div class="d-flex align-items-center vh-100">
+  <div id="login-box" class="card border-0">
+    <div class="card-body">
+      <h1>
+        Dive into your notes
+      </h1>
+      <p class="text-muted fw-normal mb-4">
+        Welcome back! Please login to your account.
+      </p>
+      <form method="POST">
+          {% csrf_token %}
+          
+          <div class="mb-2">
+            <label id="username-label" for="username" class="form-label">
+              username
+            </label><br>
+            <input type="text" id="username" name="username" required class="form-control">
+          </div>
+          
+          <div class="mb-2">
+            <label id="password-label" for="password" class="form-label">
+              password
+            </label><br>
+            <input type="password" id="password" name="password" required class="form-control">
+          </div>
+
+          {% if IsError == "True" %}
+              <p style="color:red;">ユーザー名かパスワードが間違っています。</p>
+          {% endif %}
+          
+          <button type="submit" class="btn btn-outline-secondary" style="margin-top: 20px;">Login</button>
+      </form>
+      <div class="mt-3 small"></div>
+        <a href="{% url 'signup' %}" class="text-decoration-none text-muted fw-normal link">Sign Up</a>
+      </div>
+    </div>
+  </div>
+  <div class="text-decoration-none text-muted fw-normal position-fixed start-0 bottom-0 ms-4 mb-4" style="transform: translate(50px, -60px);">
+    <a href="{% url 'home' %}" class="text-decoration-none text-muted fw-normal link">Go Home</a>
+  </div>
+</div>
+</body>
+</html>
