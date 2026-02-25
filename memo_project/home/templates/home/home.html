@@ -10,41 +10,26 @@
 </head>
 
 <body>
-  <div class="site">
-    
-    <header class="site-header">
-      <div class="header-container">
-        <div class="header-inner">
-          <div class="header-logo">
+  <header class="site-header">
+    <a href="/" class="logo">...</a>
+  </header>
 
-          </div>
-        </div>
-      </div>
-    </header>
+  <main>
+    <section class="hero">
+      
+      <h1 class="hero-title">
+        <img src="{% static 'home/logo.svg' %}" class="logo">
+        みんなの日常をわたしの余白に。
+      </h1>
 
-    <main>
-      <div class="d-flex justify-content-center align-items-center vh-100">
-          <div id="home-box" class="text-center">
-            <div id="home-title" class="fw-bold mb-1">
-              <img src="{% static 'home/logo.svg' %}" alt="yohakuNote Logo" class="header-logo-link">
-            </div>
-            <h3 id="home-subtitle" class="mb-4 text-muted fw-normal">
-              平凡をみつめよう
-            </h3>
-            <div id="home-buttons" class="card border-0 p-4 mx-auto">
-              <div class="d-grid gap-3">
-                <a href="{% url 'login' %}" class="btn btn-primary">
-                  はじめる
-                </a>
-              </div>    
-            </div>
-          </div>
-        </div>
-    </main>
+      <a href="{% url 'login' %}" class="hero-signin-btn btn btn-primary">
+        はじめる
+      </a>
+    </section>
+  </main>
 
-    <footer>
-    </footer>
-  </div>
+  <footer>
+  </footer>
 </body>
 </html>
 
